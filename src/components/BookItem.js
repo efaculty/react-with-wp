@@ -26,21 +26,30 @@ export class BookItem extends Component {
     });
   }
   render() {
-    const { id, slug, title, excerpt } = this.props.book;
-    const { imageUrl, author, isLoaded } = this.state;
+    const { slug, title, excerpt } = this.props.book;
+    //const { imageUrl, author, isLoaded } = this.state;
     console.log(this.state);
     if (localStorage.getItem("token")) {
       return (
-        <div>
-          <h2>{title.rendered}</h2>
-          <small>Created by {this.state.author}</small>
-          <img
-            style={{ marginBottom: "0" }}
-            src={this.state.imageUrl}
-            alt={title.rendered}
-          />
-          <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-          <Link to={`/book/${slug}`}>Read Book</Link>
+        <div className="col-3">
+          <div className="card">
+            <img
+              src={this.state.imageUrl}
+              className="card-img-top"
+              alt={title.rendered}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{title.rendered}</h5>
+              <p
+                className="card-text"
+                dangerouslySetInnerHTML={{ __html: excerpt.rendered }}
+              />
+              <p>Created by {this.state.author}</p>
+              <Link className="btn btn-primary" to={`/book/${slug}`}>
+                Read Book
+              </Link>
+            </div>
+          </div>
         </div>
       );
     }

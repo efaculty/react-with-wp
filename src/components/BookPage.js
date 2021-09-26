@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class BookPage extends Component {
@@ -21,14 +21,15 @@ export class BookPage extends Component {
   render() {
     const { book, isLoaded } = this.state;
     if (isLoaded) {
-      console.log();
       return (
-        <Fragment>
-          <Link to="/">Go Back</Link>
-          <h1>{book.title.rendered}</h1>
-          <p dangerouslySetInnerHTML={{ __html: book.content.rendered }} />
-          <h2>{book.acf.publisher}</h2>
-        </Fragment>
+        <div className="container">
+          <div className="row">
+            <Link to="/book">Go Back</Link>
+            <h1>{book.title.rendered}</h1>
+            <p dangerouslySetInnerHTML={{ __html: book.content.rendered }} />
+            <h2>{book.acf.publisher}</h2>
+          </div>
+        </div>
       );
     }
     return <h3>Loading...</h3>;

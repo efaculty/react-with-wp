@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 export class PostItem extends Component {
@@ -13,7 +12,7 @@ export class PostItem extends Component {
     post: PropTypes.object.isRequired,
   };
   componentDidMount() {
-    const { featured_media, author } = this.props.post;
+    //const { featured_media, author } = this.props.post;
     //const getImageUrl = axios.get(`/wp-json/wp/v2/media/${featured_media}`);
     //const getAuthor = axios.get(`/wp-json/wp/v2/users/${author}`);
     /*Promise.all([getImageUrl, getAuthor]).then((res) => {
@@ -26,25 +25,31 @@ export class PostItem extends Component {
     });*/
   }
   render() {
-    const { id, slug, title, excerpt } = this.props.post;
-    const { imageUrl, author, isLoaded } = this.state;
-    console.log(this.state);
-    if (localStorage.getItem("token")) {
-      return (
-        <div>
-          <h2>{title.rendered}</h2>
-          <small>Created by {this.state.author}</small>
+    const { slug, title, excerpt } = this.props.post;
+    //const { imageUrl, author, isLoaded } = this.state;
+
+    return (
+      <div className="col-3">
+        <div className="card">
           <img
-            style={{ marginBottom: "0" }}
             src={this.state.imageUrl}
+            className="card-img-top"
             alt={title.rendered}
           />
-          <p dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-          <Link to={`/post/${slug}`}>Read Post</Link>
+          <div className="card-body">
+            <h5 className="card-title">{title.rendered}</h5>
+            <p
+              className="card-text"
+              dangerouslySetInnerHTML={{ __html: excerpt.rendered }}
+            />
+            <p>Created by {this.state.author}</p>
+            <Link className="btn btn-primary" to={`/post/${slug}`}>
+              Read Book
+            </Link>
+          </div>
         </div>
-      );
-    }
-    return <>Login first</>;
+      </div>
+    );
   }
 }
 

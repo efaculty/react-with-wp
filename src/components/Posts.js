@@ -18,12 +18,14 @@ export class Posts extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    const { posts, isLoaded } = this.state;
+    const { posts } = this.state;
     return (
-      <div>
-        {posts.map((post) => (
-          <PostItem post={post} key={post.id}></PostItem>
-        ))}
+      <div className="container">
+        <div className="row">
+          {posts.map((post) => (
+            <PostItem post={post} key={post.id}></PostItem>
+          ))}
+        </div>
       </div>
     );
   }

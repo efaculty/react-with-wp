@@ -18,12 +18,14 @@ export class Books extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    const { books, isLoaded } = this.state;
+    const { books } = this.state;
     return (
-      <div>
-        {books.map((book) => (
-          <BookItem book={book} key={book.id}></BookItem>
-        ))}
+      <div className="container">
+        <div className="row">
+          {books.map((book) => (
+            <BookItem book={book} key={book.id}></BookItem>
+          ))}
+        </div>
       </div>
     );
   }

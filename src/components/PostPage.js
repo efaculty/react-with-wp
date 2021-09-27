@@ -8,8 +8,7 @@ export class PostPage extends Component {
     post: {},
     isLoaded: false,
   };
-  componentDidMount(props) {
-    console.log(props);
+  componentDidMount() {
     axios
       .get(`/wp-json/wp/v2/posts/?slug=${this.props.match.params.slug}`)
       .then((res) =>
@@ -33,7 +32,17 @@ export class PostPage extends Component {
         </div>
       );
     }
-    return <h3>Loading...</h3>;
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h1 className="card-title placeholder-glow">
+              <span className="placeholder col-6"></span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 

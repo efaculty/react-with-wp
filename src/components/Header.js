@@ -31,10 +31,14 @@ export default function Header() {
                 Books
               </Link>
             </li>
-
             <li className="nav-item">
               <Link className="nav-link" to="/post">
                 Posts
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/category">
+                Category
               </Link>
             </li>
           </ul>

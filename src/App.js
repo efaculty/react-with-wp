@@ -6,6 +6,8 @@ import PostPage from "./components/PostPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Header from "./components/Header";
+import Category from "./components/Category";
+import CategoryPage from "./components/CategoryPage";
 
 export class App extends Component {
   render() {
@@ -23,8 +25,12 @@ export class App extends Component {
             <Route exact path="/book">
               <Books />
             </Route>
+            <Route exact path="/category">
+              <Category />
+            </Route>
             <Route path="/post/:slug" component={PostPage} />
             <Route path="/book/:slug" component={BookPage} />
+            <Route path="/category/:slug" component={CategoryPage} />
           </Switch>
         </div>
       </Router>

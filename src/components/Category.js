@@ -8,7 +8,9 @@ export class Category extends Component {
   };
   componentDidMount() {
     axios
-      .get("/wp-json/wp/v2/categories?per_page=100&hide_empty=1")
+      .get(
+        "https://www.efaculty.in/wp-json/wp/v2/categories?per_page=100&hide_empty=1"
+      )
       .then((res) =>
         this.setState({
           categories: res.data,
